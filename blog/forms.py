@@ -1,4 +1,4 @@
-from django import forms
+# from django import forms
 
-class CommentForm(forms.Form):
-    content = forms.CharField(widget=forms.Textarea)
+# class CommentForm(forms.Form):
+#     content = forms.CharField(widget=forms.Textarea)

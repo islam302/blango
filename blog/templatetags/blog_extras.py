@@ -5,10 +5,10 @@ from django.contrib.auth import get_user_model
 register = template.Library()
 User = get_user_model()
 
-@register.filter
+@register.filter(name='author_details')
 def author_details(author, current_user):
     if not isinstance(author, User):
-        # return empty string as a safe default
+        # return empty string as safe default
         return ""
 
     if author == current_user:
