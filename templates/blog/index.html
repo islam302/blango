@@ -1,82 +1,17 @@
-{% extends "base.html" %}
-
-{% block navbar %}
-  <nav class="navbar navbar-expand-sm navbar-light bg-light">
-    <!-- Your navbar content here -->
-  </nav>
-{% endblock navbar %}
 
 {% block content %}
-  <ul class="pagination">
-    <!-- Pagination content here -->
-  </ul>
-
-  <div class="alert alert-success" role="alert">
-    A simple success alert—check it out!
-  </div>
-
-  <div class="alert alert-danger" role="alert">
-    A simple danger alert—check it out!
-  </div>
-
-  <div class="alert alert-warning" role="alert">
-    A simple warning alert—check it out!
-  </div>
-
-  <button type="button" class="btn btn-primary">Primary</button>
-  <a href="#" class="btn btn-secondary">Secondary</a>
-  <button type="button" class="btn btn-danger">Danger</button>
-
-  <div class="dropdown">
-    <!-- Dropdown content here -->
-  </div>
-
-  <div class="row">
-    <div class="col bg-primary">Column 1</div>
-    <div class="col bg-danger">Column 2</div>
-    <div class="col bg-success">Column 3</div>
-  </div>
-
-  <div class="row">
-    <div class="col-xs-12 col-sm-10 col-md-6 bg-primary">Column 1</div>
-    <div class="col-xs-12 col-sm-2 col-md-2 bg-danger">Column 2</div>
-    <div class="col bg-success">Column 3</div>
-  </div>
-
-  <div class="alert alert-success" role="alert">
-    A simple success alert—check it out!
-  </div>
-
-  <div class="alert alert-danger" role="alert">
-    A simple danger alert—check it out!
-  </div>
-
-  <div class="alert alert-warning" role="alert">
-    A simple warning alert—check it out!
-  </div>
-
-  <button type="button" class="btn btn-primary">Primary</button>
-  <a href="#" class="btn btn-secondary">Secondary</a>
-  <button type="button" class="btn btn-danger">Danger</button>
-
-  <div class="dropdown">
-    <!-- Dropdown content here -->
-  </div>
-{% endblock content %}
-
-{% block blog_content %}
-  <h2>Blog Posts</h2>
-  {% for post in posts %}
+    <h2>Blog Posts</h2>
+    {% for post in posts %}
     <div class="row">
-      <div class="col">
-        <h3>{{ post.title }}</h3>
-        <small>By {{ post.author }} on {{ post.published_at|date:"M, d Y" }}</small>
-        <p>{{ post.summary }}</p>
-        <p>
-          ({{ post.content|wordcount }} words)
-          <a href="#">Read More</a>
-        </p>
-      </div>
+        <div class="col">
+            <h3>{{ post.title }}</h3>
+            <small>By {{ post.author|author_details:request.user }} on {{ post.published_at|date:"M, d Y" }}</small>
+            <p>{{ post.summary }}</p>
+            <p>
+                ({{ post.content|wordcount }} words)
+                <a href="#">Read More</a>
+            </p>
+        </div>
     </div>
-  {% endfor %}
+    {% endfor %}
 {% endblock %}
