@@ -1,4 +1,13 @@
-# from django import forms
+from django import forms
+from blog.models import Comment
+from crispy_forms.layout import Submit
+from crispy_forms.helper import FormHelper
 
-# class CommentForm(forms.Form):
-#     content = forms.CharField(widget=forms.Textarea)
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ["content"]
+
+    def __init__(self, *args, **kwargs):
+        super(CommentForm, self).__init__(*args, **kwargs)
+        self.helper = FormHelper()
