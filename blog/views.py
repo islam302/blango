@@ -1,8 +1,10 @@
 from django.shortcuts import render, redirect
 from blog.models import Post 
 from blog.forms import CommentForm
+from django.views.decorators.cache import cache_page
 
 
+@cache_page(300)
 def post_detail(request, slug):
     post = Post.objects.get(slug=slug)
     

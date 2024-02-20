@@ -4,14 +4,12 @@ from django.contrib.contenttypes.fields import GenericForeignKey, GenericRelatio
 from django.contrib.contenttypes.models import ContentType
 
 
-
 # Create your models here.
 class Tag(models.Model):
     value = models.TextField(max_length=100)
 
     def __str__(self):
         return self.value
-
 
 
 class Comment(models.Model):
